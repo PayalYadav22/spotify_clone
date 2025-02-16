@@ -8,6 +8,7 @@ import { fileURLToPath } from "url";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import login from "../src/router/login.router.js";
+import auth from "../src/router/auth.router.js";
 
 const app = express();
 
@@ -28,6 +29,8 @@ app.use(cookieParser());
 
 // login page
 app.use("/login", login);
+// authentication page
+app.use("/auth", auth);
 
 // Initial express
 export default app;

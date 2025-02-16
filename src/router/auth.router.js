@@ -2,11 +2,10 @@
 // @copyright Payal Yadav
 
 import express from "express";
-// custom modules
-import login from "../controller/login.controller.js";
+import auth from "../controller/auth.controller.js";
 
 const router = express.Router();
 
-router.route("/").get(login);
+router.route("/").get(auth);
 
 export default router;
