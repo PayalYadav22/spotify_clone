@@ -1,0 +1,35 @@
+{
+  "name": "spotify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon -r dotenv/config --experimental-json-modules index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PayalYadav22/spotify_clone.git"
+  },
+  "keywords": [],
+  "author": "payal yadav",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/PayalYadav22/spotify_clone/issues"
+  },
+  "homepage": "https://github.com/PayalYadav22/spotify_clone#readme",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cookie-parser": "^1.4.7",
+    "cookies-parser": "^1.2.0",
+    "cors": "^2.8.5",
+    "D": "^1.0.0",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.7",
+    "nodemon": "^3.1.9"
+  }
+}
