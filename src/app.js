@@ -3,7 +3,7 @@
 
 // node modules
 import express from "express";
-import path, { dirname } from "path";
+import path from "path";
 import { fileURLToPath } from "url";
 import cookieParser from "cookie-parser";
 import cors from "cors";
@@ -11,15 +11,16 @@ import login from "../src/router/login.router.js";
 
 const app = express();
 
-// ejs setting
-app.set("view engine", "ejs");
-
 // setting static directory
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Set views directory
+// Set view engine
+app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "../views"));
+
+// Serve static files
+app.use(express.static(path.join(__dirname, "../public")));
 
 // enable cors & cookies parser
 app.use(cors());
