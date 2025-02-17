@@ -3,10 +3,9 @@
 
 const clientId = process.env.CLIENT_ID;
 const clientSecret = process.env.CLIENT_SECRET;
-const baseUri = process.env.BASE_URI;
-const tokenBaseUri = process.env.TOKEN_BASE_URI;
+const authUri = process.env.AUTH_URI;
 const redirectUri = process.env.REDIRECT_URI;
-const scopes = process.env.SCOPES;
+const apiUri = process.env.API_URI;
 
 const stateKey = "spotify_auth_state";
 
@@ -17,10 +16,9 @@ const defaultLimit = 28;
 export default {
   clientId,
   clientSecret,
-  baseUri,
-  tokenBaseUri,
+  authUri,
   redirectUri,
-  scopes,
+  apiUri,
   stateKey,
   market,
   lowLimit,

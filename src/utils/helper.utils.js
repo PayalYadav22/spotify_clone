@@ -11,7 +11,7 @@ const generateRandomString = (length) => {
   const /* {string} */ possibleLetter =
       "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
-  for (let i = 0; i < length; i++) {
+  for (let i = 0; i < length - 1; i++) {
     const /** {number} */ randomIndex = Math.floor(
         Math.random() * possibleLetter.length
       );
