@@ -5,7 +5,7 @@ import axios from "axios";
 import apiConfig from "./api.config.js";
 
 const baseUri = `${apiConfig.authUri}api`;
-const token = axios.create({
+export const token = axios.create({
   baseURL: baseUri,
   headers: {
     Authorization:
@@ -29,7 +29,7 @@ const api = axios.create({ baseURL: apiConfig.apiUri });
  * @returns {Promise} A promise that resolves with the response of the API request.
  */
 
-const getDate = async (apiUrl, access_token) => {
+export const getDate = async (apiUrl, access_token) => {
   try {
     const response = await api.get(`${apiUrl}`, {
       headers: {
@@ -41,5 +41,3 @@ const getDate = async (apiUrl, access_token) => {
     console.log(error);
   }
 };
-
-export default { token, getDate };

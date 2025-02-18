@@ -1,10 +1,64 @@
+<% 
+  const { artists : trackArtistsItem  } = locals.trackArtists
+%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <%- include('../layout/header'); %>
+    <%- include('../layout/header',{ title: 'Home | Spotify Clone'})%>
   </head>
+
   <body>
-    <!-- top bar -->
-    <%- include('../partials/top_bar',locals.currentProfile); %>
+    <article class="page custom-scrollbar" data-page>
+      <!-- top bar -->
+      <%- include('../partials/top_bar', locals.currentProfile ) %>
+      <div class="main" data-main>
+        <!-- track albums -->
+        <% if (locals.trackPlayer.length) { %>
+        <section class="section new-release">
+          <div class="title-wrapper">
+            <h2 class="title-large section-title">Recommend for You</h2>
+          </div>
+          <div class="slider">
+            <div class="slider-inner">
+              <% locals.trackPlayer.forEach(({ album: { artists, images, type,
+              id, name: title, uri } }) => { %> <% const text = artists.map(({
+              name }) => name).join(', '); const image = images.find(( item ) =>
+              item.width === 300);  %>
+              <%- include('../partials/card',{ image, title, type:'album', text,
+              link:`/album/${id}`, uri }) %> <% }) %>
+            </div>
+          </div>
+        </section>
+        <%}%>
+
+        <!-- track artists -->
+        <% if (trackArtistsItem.length) { %>
+          <section class="section new-release">
+            <div class="title-wrapper">
+              <h2 class="title-large section-title">Artist for You</h2>
+            </div>
+            <div class="slider">
+              <div class="slider-inner">
+               <% trackArtistsItem.forEach(({name:title, type, images, id, uri})=>{ %>     
+               <% const [image] = images || [] %>
+               <%- include('../partials/card',{ 
+                variant:'artist-card',
+                title,
+                image,
+                type,
+                text:type,
+                link:`/artist/${id}`,
+                uri
+                }) %>
+               <% }) %>
+              </div>
+            </div>
+          </section>
+        <%}%>
+      </div>
+      <!-- bottom nav -->
+      <%- include('../partials/bottom_nav', { currentRoute: '/' }) %>
+    </article>
   </body>
 </html>

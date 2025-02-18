@@ -2,11 +2,11 @@
 // @copyright Payal Yadav
 
 import apiConfig from "../config/api.config.js";
-import axiosConfig from "../config/axios.config.js";
+import { token } from "../config/axios.config.js";
 
-const getToken = async (code) => {
+export const getToken = async (code) => {
   try {
-    const response = await axiosConfig.token.post("/token", {
+    const response = await token.post("/token", {
       grant_type: "authorization_code",
       code,
       redirect_uri: apiConfig.redirectUri,
@@ -16,5 +16,3 @@ const getToken = async (code) => {
     console.log(error);
   }
 };
-
-export default { getToken };

@@ -1,14 +1,14 @@
 // @license Apache-2.0
 // @copyright Payal Yadav
 
-import axiosConfig from "../config/axios.config.js";
+import { token } from "../config/axios.config.js";
 /**
  * @param {string} refreshToken
  * @return {object}
  */
-const getRefreshToken = async (refreshToken) => {
+export const getRefreshToken = async (refreshToken) => {
   try {
-    const response = await axiosConfig.token.post("/token", {
+    const response = await token.post("/token", {
       grant_type: "refresh_token",
       refresh_token: refreshToken,
     });
@@ -17,5 +17,3 @@ const getRefreshToken = async (refreshToken) => {
     console.log(error);
   }
 };
-
-export { getRefreshToken };

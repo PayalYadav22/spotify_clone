@@ -4,7 +4,7 @@
 import queryString from "query-string";
 import { generateRandomString } from "../utils/helper.utils.js";
 import apiConfig from "../config/api.config.js";
-import authApi from "../api/auth.api.js";
+import { getToken } from "../api/auth.api.js";
 
 const scope = [
   "user-read-private",
@@ -44,7 +44,7 @@ const authentication = async (req, res) => {
     return res.redirect("/login");
   } else {
     res.clearCookie(apiConfig.stateKey);
-    const response = await authApi.getToken(code);
+    const response = await getToken(code);
     if (response.status === 200) {
       if (response.data) {
         const { access_token, expires_in, refresh_token } = response.data;
