@@ -1,5 +1,6 @@
 <% 
   const { artists : trackArtistsItem  } = locals.trackArtists
+  const { items : newReleaseItem, next: newReleaseNext  } = locals.newRelease
 %>
 
 <!DOCTYPE html>
@@ -56,6 +57,38 @@
             </div>
           </section>
         <%}%>
+
+        <!-- new release album -->
+        <% if (newReleaseItem !== null) { %>
+          <section class="section new-release">
+            <div class="title-wrapper">
+              <h2 class="title-large section-title">New release</h2>
+              <a href="/album" class="btn btn-link" data-ripple>
+                <span class="label-large">
+                  See all
+                </span>
+                <div class="state-layer"></div>
+              </a>
+            </div>
+            <div class="slider">
+              <div class="slider-inner">
+                <% console.log(newReleaseItem) %>
+                <% newReleaseItem.forEach(({id, images, name:title, artists, uri})=>{ %>
+                  <%
+                    const text = artists.map(({name }) => name).join(', ');
+                    const image = images.find(( item ) => item.width === 300);
+                  %>
+                  <%- include('../partials/card',{ image, title, type:'album', text,
+                  link:`/album/${id}`, uri }) %> 
+                <% }) %>
+              </div>
+            </div>
+          </section>
+        <%}%>
+
+        <!-- playlist -->
+  
+
       </div>
       <!-- bottom nav -->
       <%- include('../partials/bottom_nav', { currentRoute: '/' }) %>

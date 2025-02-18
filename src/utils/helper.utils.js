@@ -6,7 +6,10 @@
  * @param {number} length - The length of the string to generate.
  * @returns {string} - A random alphanumeric string.
  */
-const generateRandomString = (length) => {
+
+import apiConfig from "../config/api.config.js";
+
+export const generateRandomString = (length) => {
   let /* {string} */ randomString = "";
   const /* {string} */ possibleLetter =
       "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -21,4 +24,20 @@ const generateRandomString = (length) => {
   return randomString;
 };
 
-export { generateRandomString };
+
+/** 
+ * @param {object} params
+ * @param {number} [params.page = 1]
+ * @param {number} [limit=apiConfig.defaultLimit]
+ * @returns { object }
+*/
+
+export const getUrlQuery = ({params, limit = apiConfig.defaultLimit}) => {
+  const { page = 1 } = params || {} ;
+  const offset = (limit * page) - limit;
+  return { limit, offset, page }
+}
+
+
+
+

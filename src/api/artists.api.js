@@ -2,7 +2,6 @@
 // @copyright Payal Yadav
 
 import { getDate } from "../config/axios.config.js";
-import apiConfig from "../config/api.config.js";
 
 /**
  * Get profile details information about user
