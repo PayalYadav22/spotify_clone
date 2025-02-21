@@ -36,7 +36,8 @@ const index = async (req, res) => {
   const newRelease = await getNewRelease(req, apiConfig.lowLimit);
 
   // playlist
-  const playlist = await getPlaylist(req);
+  const playlist = await getPlaylist(req, apiConfig.lowLimit);
+  console.log(playlist)
 
   // hone page
   res.render("./pages/index", {
