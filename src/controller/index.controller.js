@@ -26,22 +26,26 @@ const index = async (req, res) => {
   const trackPlayer = track.tracks;
 
   // tracks artists
-  const artistsId = trackPlayer.map((track)=> track.artists.map(artist => artist.id))
-  const uniqueArtistsId = [... new Set(artistsId.flat(1))].join(',');
-  const trackArtists = await getSeveralArtists(req, uniqueArtistsId)
+  const artistsId = trackPlayer.map((track) =>
+    track.artists.map((artist) => artist.id)
+  );
+  const uniqueArtistsId = [...new Set(artistsId.flat(1))].join(",");
+  const trackArtists = await getSeveralArtists(req, uniqueArtistsId);
 
   // several albums
-  const newRelease = await getNewRelease(req, apiConfig.lowLimit)
+  const newRelease = await getNewRelease(req, apiConfig.lowLimit);
 
   // playlist
-  const playlist =  await getPlaylist(req)
-  console.log('playlist start')
-  console.log(playlist)
-
-  console.log('playlist start')
+  const playlist = await getPlaylist(req);
 
   // hone page
-  res.render("./pages/index", { currentProfile, trackPlayer, trackArtists, newRelease, playlist });
+  res.render("./pages/index", {
+    currentProfile,
+    trackPlayer,
+    trackArtists,
+    newRelease,
+    playlist,
+  });
 };
 
 export default index;
